@@ -18,6 +18,7 @@ ALLOWED_HOSTS = ['0.0.0.0']
 # Application definition
 
 INSTALLED_APPS = [
+    'backend.apps.BackendConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,14 +61,16 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
+print(os.getenv('POSTGRES_DB'))
+print(os.getenv('POSTGRES_USER'))
+print(os.getenv('POSTGRES_HOST'))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbbackend',#os.getenv('POSTGRES_DB'),
-        'USER': 'postgres',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': '',
-        'HOST': 'postgres-backend',#os.getenv('POSTGRES_HOST'), #to be added in docker compose
+        'HOST': os.getenv('POSTGRES_HOST'),
         'PORT': '5432',
     }
 }
