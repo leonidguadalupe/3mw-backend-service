@@ -1,0 +1,7 @@
+__pycache__
+.vscode
+.venv
+dist/
+pip-wheel-metadata
+.DS_Store
+envy

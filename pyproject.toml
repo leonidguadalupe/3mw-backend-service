@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "3mw-backend-service"
+version = "0.0.1"
+description = "Backend Service"
+authors = ["Leonid"]
+packages = [
+    { include = "3mw_backend_service", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+django = "^2.2"
+djangorestframework = "^3.10"
+psycopg2 = "^2.8"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.7"
+black = "^19.3b0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
