@@ -11,6 +11,10 @@ class Datapoint(BaseModel):
     irradiation_observed = models.DecimalField(max_digits=40, decimal_places=14)
 
     class Meta:
+        unique_together = ('plant','datetime_generated')
+        indexes = [
+            models.Index(fields=['plant','datetime_generated'])
+        ]
         verbose_name = "datapoint"
         verbose_name_plural = "datapoints"
 
