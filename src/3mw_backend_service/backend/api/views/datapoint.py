@@ -24,7 +24,7 @@ class FetchMonitoringViewSet(APIView):
         from_ = request.GET.get("from")
         to_ = request.GET.get("to")
         try:
-            r = requests.get('http://localhost:5000/', 
+            r = requests.get('http://192.168.2.18:5000/', 
                 params= {
                     'plant-id': plant_id,
                     'from':from_,
