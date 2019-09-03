@@ -151,6 +151,6 @@ from celery.schedules import crontab
 CELERY_BEAT_SCHEDULE = {
     'get_datapoints': {
         'task': 'backend.tasks.get_all_datapoints_for_plants',
-        'schedule': 10.0#crontab(hour="*/24")
+        'schedule': crontab(hour="23", minute="30") #runs every 11:30 midnight
     }
 }
