@@ -23,8 +23,9 @@ class FetchMonitoringViewSet(APIView):
         plant_id = request.GET.get("plant-id")
         from_ = request.GET.get("from")
         to_ = request.GET.get("to")
+
         try:
-            r = requests.get('http://192.168.2.18:5000/', 
+            r = requests.get(f'http://172.21.0.6:5000/', 
                 params= {
                     'plant-id': plant_id,
                     'from':from_,
@@ -33,7 +34,7 @@ class FetchMonitoringViewSet(APIView):
                 timeout= 5
         )
         except requests.exceptions.RequestException as e: 
-            print(e)
+            raise e
         
         result = r.json()
         

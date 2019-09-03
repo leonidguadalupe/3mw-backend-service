@@ -12,7 +12,7 @@ SECRET_KEY = 'j9d^%w&v85eqi_80j-u@r!+$-0^1hpld)$vrsw3=0(=6iy$92*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','monitoring','api']
 
 
 # Application definition
@@ -135,6 +135,6 @@ REST_FRAMEWORK = {
     ]
 }
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "http://0.0.0.0:3000"
+    "http://api.localhost",
+    "http://0.0.0.0"
 ]

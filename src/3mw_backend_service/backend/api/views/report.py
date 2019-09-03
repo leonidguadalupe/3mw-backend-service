@@ -12,14 +12,9 @@ class ReportingViewSet(APIView):
     def get(self, request, format=None) -> Response:
         plant_id = request.GET.get("plant-id")
         date_ = request.GET.get("date")
-        print(date_, plant_id)
-        year, month = date_.split('-')
         
-        # serializer = ReportSerializer(DatapointModel.objects.filter(
-        #     datetime_generated__year=year,
-        #     datetime_generated__month=month
-        #     ), many=True, context={'request': request}
-        # )
+        year, month = date_.split('-')
+
         metrics =  {
             'total_energy_observed': Sum('energy_observed'),
             'total_energy_expected': Sum('energy_expected'),
@@ -28,11 +23,12 @@ class ReportingViewSet(APIView):
             # 'avg_charged_amount': Avg('charged_amount'),
             # 'unique_users': Count('user', distinct=True),
         }
+        
         result = ReportSerializer(DatapointModel.objects.filter(
             datetime_generated__year=year,
             datetime_generated__month=month
             ).values('datetime_generated__date').annotate(**metrics), 
             many=True, context={'request': request}
         )
-        print(result)
+        
         return Response({"data": result.data})
