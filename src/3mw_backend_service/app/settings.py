@@ -138,3 +138,19 @@ CORS_ORIGIN_WHITELIST = [
     "http://api.localhost",
     "http://0.0.0.0"
 ]
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Singapore'
+
+from celery.schedules import crontab
+
+CELERY_BEAT_SCHEDULE = {
+    'get_datapoints': {
+        'task': 'backend.tasks.get_all_datapoints_for_plants',
+        'schedule': 10.0#crontab(hour="*/24")
+    }
+}

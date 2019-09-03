@@ -25,14 +25,13 @@ class FetchMonitoringViewSet(APIView):
         to_ = request.GET.get("to")
 
         try:
-            r = requests.get(f'http://172.21.0.6:5000/', 
+            r = requests.get(f'http://172.21.0.9:5000/', 
                 params= {
                     'plant-id': plant_id,
                     'from':from_,
                     'to':to_
                 },
-                timeout= 5
-        )
+            )
         except requests.exceptions.RequestException as e: 
             raise e
         
